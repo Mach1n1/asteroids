@@ -1,24 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Logic
 {
-    public abstract class Movement
-    {
-        protected float moveSpeed;
-
-        public abstract void Move(Transform transformObject);
-
-        public abstract void Rotate(Transform transformObject);
-
-        public abstract void SetSpeed(float speed, float deltaTime);
-    }
-
-    public sealed class PlayerMovement : Movement
+     public sealed class PlayerMovement : AbstractMovement
     {
         public Vector3 acceleration {get; private set;}
         public float eulerAngle {get; private set;}
+
         private float rotate;
         private float rotateSpeed;
 
@@ -35,6 +23,11 @@ namespace Game.Logic
         public override void Move(Transform player)
         {
             player.position = player.position + acceleration;
+        }
+
+        public override void SetSpeed(float rotateSpeed, float deltaTime)
+        {
+            this.rotateSpeed = rotateSpeed * deltaTime;
         }
 
         public override void Rotate(Transform player)
@@ -54,10 +47,7 @@ namespace Game.Logic
             return eulerAngle = rotate;
         }
 
-        public override void SetSpeed(float rotateSpeed, float deltaTime)
-        {
-            this.rotateSpeed = rotateSpeed * deltaTime;
-        }
-
     }
+
+    
 }

@@ -55,9 +55,13 @@ public class PlayerMove : MonoBehaviour
     private void TryToAccelerate()
     {
         if (PlayerIsMoving())
-            movement.Accelerate(transformPlayer, boost.unitsInSecond, boost.maxBoost, Time.deltaTime);
+        {
+                movement.Accelerate(transformPlayer, boost.unitsInSecond, boost.maxBoost, Time.deltaTime);
+        }
         else
+        {
             movement.Slow(timeStop.SecondsToStop, Time.deltaTime);
+        }
     }
 
     private void TryToRotate()
@@ -87,7 +91,7 @@ internal class Boost
         public float rotation => myRotationSpeed;
     }
 
-    [Serializable]
+[Serializable]
 internal class ItsTimeToStop
 {
     [SerializeField] private float seconds;
