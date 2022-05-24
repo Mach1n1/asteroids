@@ -46,7 +46,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""ShootBullet"",
+                    ""name"": ""ShootBlaster"",
                     ""type"": ""Button"",
                     ""id"": ""c9df5b0a-f2e8-41a3-9242-5cf57566e349"",
                     ""expectedControlType"": ""Button"",
@@ -116,7 +116,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ShootBullet"",
+                    ""action"": ""ShootBlaster"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -152,7 +152,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_MoveForward = m_Player.FindAction("MoveForward", throwIfNotFound: true);
         m_Player_Rotate = m_Player.FindAction("Rotate", throwIfNotFound: true);
-        m_Player_ShootBullet = m_Player.FindAction("ShootBullet", throwIfNotFound: true);
+        m_Player_ShootBlaster = m_Player.FindAction("ShootBlaster", throwIfNotFound: true);
         m_Player_ShootLaser = m_Player.FindAction("ShootLaser", throwIfNotFound: true);
     }
 
@@ -215,7 +215,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_MoveForward;
     private readonly InputAction m_Player_Rotate;
-    private readonly InputAction m_Player_ShootBullet;
+    private readonly InputAction m_Player_ShootBlaster;
     private readonly InputAction m_Player_ShootLaser;
     public struct PlayerActions
     {
@@ -223,7 +223,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @MoveForward => m_Wrapper.m_Player_MoveForward;
         public InputAction @Rotate => m_Wrapper.m_Player_Rotate;
-        public InputAction @ShootBullet => m_Wrapper.m_Player_ShootBullet;
+        public InputAction @ShootBlaster => m_Wrapper.m_Player_ShootBlaster;
         public InputAction @ShootLaser => m_Wrapper.m_Player_ShootLaser;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -240,9 +240,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Rotate.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
                 @Rotate.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
                 @Rotate.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotate;
-                @ShootBullet.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootBullet;
-                @ShootBullet.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootBullet;
-                @ShootBullet.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootBullet;
+                @ShootBlaster.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootBlaster;
+                @ShootBlaster.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootBlaster;
+                @ShootBlaster.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootBlaster;
                 @ShootLaser.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootLaser;
                 @ShootLaser.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootLaser;
                 @ShootLaser.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShootLaser;
@@ -256,9 +256,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Rotate.started += instance.OnRotate;
                 @Rotate.performed += instance.OnRotate;
                 @Rotate.canceled += instance.OnRotate;
-                @ShootBullet.started += instance.OnShootBullet;
-                @ShootBullet.performed += instance.OnShootBullet;
-                @ShootBullet.canceled += instance.OnShootBullet;
+                @ShootBlaster.started += instance.OnShootBlaster;
+                @ShootBlaster.performed += instance.OnShootBlaster;
+                @ShootBlaster.canceled += instance.OnShootBlaster;
                 @ShootLaser.started += instance.OnShootLaser;
                 @ShootLaser.performed += instance.OnShootLaser;
                 @ShootLaser.canceled += instance.OnShootLaser;
@@ -279,7 +279,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     {
         void OnMoveForward(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
-        void OnShootBullet(InputAction.CallbackContext context);
+        void OnShootBlaster(InputAction.CallbackContext context);
         void OnShootLaser(InputAction.CallbackContext context);
     }
 }

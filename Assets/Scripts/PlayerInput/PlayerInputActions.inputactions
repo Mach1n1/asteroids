@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "ShootBullet",
+                    "name": "ShootBlaster",
                     "type": "Button",
                     "id": "c9df5b0a-f2e8-41a3-9242-5cf57566e349",
                     "expectedControlType": "Button",
@@ -94,7 +94,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ShootBullet",
+                    "action": "ShootBlaster",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
