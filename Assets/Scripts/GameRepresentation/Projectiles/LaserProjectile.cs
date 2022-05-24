@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserProjectile : MonoBehaviour
+public class LaserProjectile : AbstractProjectile
 {
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        DestroyYourselfAfterSomeTime(gameObject, TimeToDestroy);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        BulletMovement(BulletSpeed);
     }
+
+    public void DestroyYourselfAfterSomeTime(GameObject gameObject, float timeDestroy)
+    {
+        Destroy(gameObject, timeDestroy);
+    }
+
 }

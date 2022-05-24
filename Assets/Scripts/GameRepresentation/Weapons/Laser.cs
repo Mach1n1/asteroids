@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Laser : MonoBehaviour
+[RequireComponent(typeof(Ammo))]
+public sealed class Laser : AbstractWeapon
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Ammo ammo;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        ammo = GetComponent<Ammo>();
+    }
+    public override void WeaponShoot()
+    {
+        ammo.SpendCharge();
+        CreateProjectile(barrel, projectile);
     }
 }

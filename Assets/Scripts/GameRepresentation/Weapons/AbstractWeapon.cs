@@ -7,7 +7,7 @@ public abstract class AbstractWeapon : MonoBehaviour
 
     public abstract void WeaponShoot();
 
-    protected void CreateBullet(Transform barrel, AbstractProjectile projectile)
+    protected void CreateProjectile(Transform barrel, AbstractProjectile projectile)
     {
         Instantiate(projectile, barrel.position, barrel.rotation);
     }

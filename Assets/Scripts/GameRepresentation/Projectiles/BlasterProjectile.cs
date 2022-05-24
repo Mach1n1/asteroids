@@ -1,11 +1,10 @@
 using UnityEngine;
-using Game.Logic;
 
 public class BlasterProjectile : AbstractProjectile
 {
     private void Start()
     {
-        DestroyYourselfAfterCertainTime(gameObject, TimeToDestroy);
+        DestroyYourselfAfterSomeTime(gameObject, TimeToDestroy);
     }
 
     private void Update()
@@ -13,7 +12,7 @@ public class BlasterProjectile : AbstractProjectile
         BulletMovement(BulletSpeed);
     }
 
-    public void DestroyYourselfAfterCertainTime(GameObject gameObject, float timeToDestroy)
+    public void DestroyYourselfAfterSomeTime(GameObject gameObject, float timeToDestroy)
     {
         Destroy(gameObject, timeToDestroy);
     }

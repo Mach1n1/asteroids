@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] Blaster blaster;
+    [SerializeField] Laser laser;
+    [SerializeField] private Ammo ammo;
 
     private PlayerInputActions input;
 
@@ -17,11 +17,30 @@ public class PlayerShooting : MonoBehaviour
     {
         input.Enable();
         input.Player.ShootBlaster.performed += ctx => OnShootBlaster();
+        input.Player.ShootLaser.performed += ctx => OnShootLaser();
+    }
+
+    private void OnDisable()
+    {
+        input.Disable();
+        input.Player.ShootBlaster.performed -= ctx => OnShootBlaster();
+        input.Player.ShootLaser.performed -= ctx => OnShootLaser();
     }
 
     private void OnShootBlaster()
     {
         blaster.WeaponShoot();
+    }
+
+    private void OnShootLaser()
+    {
+        TryShootLaser();
+    }
+
+    private void TryShootLaser()
+    {
+        if (ammo.CurrentAmmo > ammo.NoAmmo)
+            laser.WeaponShoot();
     }
 
 }
