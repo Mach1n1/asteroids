@@ -4,95 +4,59 @@ using UnityEngine;
 
 public class Ammo : MonoBehaviour
 {
+    
     [SerializeField] private int maxAmmo;
+    [SerializeField] private int recoverAmmoTime;
+
     private int currentAmmo;
-    private const byte noAmmo = 0;
-
-    [SerializeField] private float timeToReloadAmmo;
-    [SerializeField] private float reloadAmmoSpeed;
-
-    private float currentTimeReloadAmmo;
-    private const byte limitTimeReloadAmmo = 0;
-
-    private bool isReloading = false;
-    public int NoAmmo => noAmmo;
     public int CurrentAmmo => currentAmmo;
-    public float TimeReloadAmmoView => currentTimeReloadAmmo;
+
+    /* private WaitForSeconds regenTick = new WaitForSeconds(2f); */
+
+    private WaitForSeconds regenTick;
+    private Coroutine regen;
+
+    public static Ammo instance;
+
+    private void Awake()
+    {
+        instance = this;
+        regenTick = new WaitForSeconds((float)recoverAmmoTime);
+    }
 
     private void Start()
     {
-        if (maxAmmo <= noAmmo)
-            throw new ArgumentOutOfRangeException(nameof(maxAmmo));
-
-        SetCurrentAmmo();
-        SetCurrentReloadTime();
-    }
-
-    private void Update()
-    {
-        ReloadConditions();
+        currentAmmo = maxAmmo;
     }
 
     public void SpendCharge()
     {
-        currentAmmo--;
-    }
-
-    private void ReloadConditions()
-    {
-        if (currentAmmo > maxAmmo)
+        Debug.Log(instance.currentAmmo);
+        if(currentAmmo > 0)
         {
-            throw new ArgumentOutOfRangeException(nameof(currentAmmo));
+            currentAmmo--;  
+
+            if (regen != null)
+                StopCoroutine(regen);
+
+            regen = StartCoroutine(RegenAmmo());
         }
-        if (isReloading)
+        else
         {
-            return;
-        }
-
-        ReloadAmmo();
-        NegativReloadAmmo();
-    }
-
-    private void ReloadAmmo()
-    {
-        if (currentAmmo == noAmmo)
-            StartCoroutine(AutoReloadAmmo());
-    }
-
-    private void NegativReloadAmmo()
-    {
-        if (currentAmmo < noAmmo)
-        {
-            currentAmmo = noAmmo;
-
-            StartCoroutine(AutoReloadAmmo());
+            Debug.Log("No Ammo");
         }
     }
 
-    private IEnumerator AutoReloadAmmo()
+    private IEnumerator RegenAmmo()
     {
-        isReloading = true;
+        yield return new WaitForSeconds(recoverAmmoTime);
 
-        while (currentTimeReloadAmmo > limitTimeReloadAmmo)
+        while(currentAmmo < maxAmmo)
         {
-            yield return new WaitForSeconds(reloadAmmoSpeed);
-
-            currentTimeReloadAmmo--;
+            currentAmmo++;
+            yield return regenTick;
         }
-
-        SetCurrentAmmo();
-        SetCurrentReloadTime();
-
-        isReloading = false;
-    }
-
-    private void SetCurrentAmmo()
-    {
-        currentAmmo = maxAmmo;
-    }
-    private void SetCurrentReloadTime()
-    {
-        currentTimeReloadAmmo = timeToReloadAmmo;
+        regen = null;
     }
 
 }
