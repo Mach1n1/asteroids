@@ -17,6 +17,15 @@ public class BlasterProjectile : AbstractProjectile
         Destroy(gameObject, timeToDestroy);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out Enemy enemy))
+        {
+            enemy.Die();
+            DestroyYourselfCollision();
+        }
+    }
+
     private void DestroyYourselfCollision()
     {
         Destroy(gameObject);
