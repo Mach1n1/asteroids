@@ -12,6 +12,9 @@ public class PlayerMove : MonoBehaviour
     private Transform transformPlayer;
     private float rotatePlayer;
 
+    public Vector3 AccelerationPlayer => movement.acceleration;
+    public Transform TransformPlayer => transformPlayer;
+    public float AngleRotatePlayer => movement.eulerAngle;
     
     private void Awake()
     {

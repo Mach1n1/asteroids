@@ -6,57 +6,75 @@ public class Ammo : MonoBehaviour
 {
     
     [SerializeField] private int maxAmmo;
-    [SerializeField] private int recoverAmmoTime;
+    [SerializeField] private float recoverAmmoTime;
+
+    private float countdown = 1;
+    private const byte limitTimeReloadAmmo = 0;
+
+    private float currentRecoverAmmoTime;
 
     private int currentAmmo;
     public int CurrentAmmo => currentAmmo;
-
-    /* private WaitForSeconds regenTick = new WaitForSeconds(2f); */
-
-    private WaitForSeconds regenTick;
+    public float ReloadTimeAmmoView => currentRecoverAmmoTime;
     private Coroutine regen;
 
+    private bool isReloading = false;
     public static Ammo instance;
 
     private void Awake()
     {
         instance = this;
-        regenTick = new WaitForSeconds((float)recoverAmmoTime);
     }
 
     private void Start()
     {
         currentAmmo = maxAmmo;
+        SetCurrentCountdownTimeView();
+    }
+
+    private void FixedUpdate()
+    {
+        ConditionsReloadingAmmo();
+    }
+
+    private void ConditionsReloadingAmmo()
+    {
+        if (isReloading || currentAmmo == maxAmmo)
+        {
+            return;
+        }
+        ReloadAmmo();
+    }
+
+    private void ReloadAmmo()
+    {
+        regen = StartCoroutine(RegenAmmo());
     }
 
     public void SpendCharge()
     {
-        Debug.Log(instance.currentAmmo);
-        if(currentAmmo > 0)
-        {
-            currentAmmo--;  
-
-            if (regen != null)
-                StopCoroutine(regen);
-
-            regen = StartCoroutine(RegenAmmo());
-        }
-        else
-        {
-            Debug.Log("No Ammo");
-        }
+        currentAmmo--;
     }
 
-    private IEnumerator RegenAmmo()
+private IEnumerator RegenAmmo()
     {
-        yield return new WaitForSeconds(recoverAmmoTime);
+        isReloading = true;
 
-        while(currentAmmo < maxAmmo)
+        while(currentRecoverAmmoTime > limitTimeReloadAmmo)
         {
-            currentAmmo++;
-            yield return regenTick;
+            yield return new WaitForSeconds(countdown);
+            currentRecoverAmmoTime--;
         }
-        regen = null;
+        currentAmmo++;
+        SetCurrentCountdownTimeView();
+
+        isReloading = false;
     }
+
+    private void SetCurrentCountdownTimeView()
+    {
+        currentRecoverAmmoTime = recoverAmmoTime;
+    }
+
 
 }
