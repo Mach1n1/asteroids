@@ -9,6 +9,7 @@ public class Asteroid : Enemy
     public override void Die()
     {
         gameObject.SetActive(false);
+        AddScore();
         SpawnChildren();
     }
 

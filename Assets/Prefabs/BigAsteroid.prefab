@@ -141,5 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 351af61a93e20fb4b9fe0156fed03a73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Score: 10
   ChildTemplate: {fileID: 4714859060655041207, guid: 76aefe005e28ae04c8b1b017c260b379, type: 3}
   NumberSpawnChildren: 3
