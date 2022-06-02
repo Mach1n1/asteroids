@@ -11,7 +11,6 @@ public class GameOverScreen : MonoBehaviour
     private void OnEnable()
     {
         reloader = new SceneReloader();
-
         player.PlayerDead += OnPlayerDead;
     }
 

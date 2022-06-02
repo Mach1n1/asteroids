@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1958585273}
   - component: {fileID: 1958585274}
   - component: {fileID: 1958585275}
-  - component: {fileID: 5170361418330651498}
   m_Layer: 0
   m_Name: LaserBarrel
   m_TagString: Untagged
@@ -61,22 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAmmo: 3
-  timeToReloadAmmo: 5
-  reloadAmmoSpeed: 1
---- !u!114 &5170361418330651498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1958585272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c803af40ee20154da8d56bba8676c8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAmmo: 2
-  recoverAmmoTime: 2
+  recoverAmmoTime: 5
 --- !u!1 &2031691934
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,9 +119,11 @@ GameObject:
   - component: {fileID: 1015748939678648905}
   - component: {fileID: 5536834667913424909}
   - component: {fileID: 4795764026531899171}
+  - component: {fileID: 5226443872427767453}
   - component: {fileID: 904869198}
-  - component: {fileID: 904869203}
+  - component: {fileID: 8902646215528097854}
   - component: {fileID: 904869204}
+  - component: {fileID: 904869203}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -261,6 +247,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.12, y: 0.24}
   m_EdgeRadius: 0
+--- !u!114 &5226443872427767453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2714454195328674582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53fdbbe3eaf56994eb33d483269abc03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &904869198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,12 +272,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boost:
-    mySpeed: 0.01
+    mySpeed: 0.05
     myMaxSpeed: 0.1
-    myRotationSpeed: 90
+    myRotationSpeed: 100
   timeStop:
     seconds: 1
---- !u!114 &904869203
+--- !u!114 &8902646215528097854
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -288,9 +286,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2714454195328674582}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36422f2faa8b290489c07024bac89fb9, type: 3}
+  m_Script: {fileID: 11500000, guid: f24608bdbba06cf42bc07d1034df94ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 904869198}
 --- !u!114 &904869204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,5 +303,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blaster: {fileID: 2031691936}
-  laser: {fileID: 0}
-  ammo: {fileID: 0}
+  laser: {fileID: 1958585274}
+  ammo: {fileID: 1958585275}
+--- !u!114 &904869203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2714454195328674582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36422f2faa8b290489c07024bac89fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

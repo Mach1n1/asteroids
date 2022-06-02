@@ -1,5 +1,4 @@
 using System.Collections;
-using System;
 using UnityEngine;
 
 public class Ammo : MonoBehaviour
@@ -8,18 +7,19 @@ public class Ammo : MonoBehaviour
     [SerializeField] private int maxAmmo;
     [SerializeField] private float recoverAmmoTime;
 
-    private float countdown = 1;
-    private const byte limitTimeReloadAmmo = 0;
-
-    private float currentRecoverAmmoTime;
-
-    private int currentAmmo;
-    public int CurrentAmmo => currentAmmo;
-    public float ReloadTimeAmmoView => currentRecoverAmmoTime;
     private Coroutine regen;
 
+    private float countdown = 1;
     private bool isReloading = false;
+    private const byte limitTimeReloadAmmo = 0;
+
+    private int currentAmmo;
+    private float currentRecoverAmmoTime;
+
     public static Ammo instance;
+
+    public int CurrentAmmo => currentAmmo;
+    public float ReloadTimeAmmoView => currentRecoverAmmoTime;
 
     private void Awake()
     {
@@ -56,7 +56,7 @@ public class Ammo : MonoBehaviour
         currentAmmo--;
     }
 
-private IEnumerator RegenAmmo()
+    private IEnumerator RegenAmmo()
     {
         isReloading = true;
 
@@ -65,6 +65,7 @@ private IEnumerator RegenAmmo()
             yield return new WaitForSeconds(countdown);
             currentRecoverAmmoTime--;
         }
+        
         currentAmmo++;
         SetCurrentCountdownTimeView();
 

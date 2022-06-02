@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Asteroid : Enemy
 {
-    [SerializeField] protected GameObject ChildTemplate;
-    [SerializeField] protected int NumberSpawnChildren;
+    [SerializeField] protected GameObject childTemplate;
+    [SerializeField] protected int numberSpawnChildren;
 
     public override void Die()
     {
@@ -15,15 +15,14 @@ public class Asteroid : Enemy
 
     public void SpawnChildren() 
     {
-        CreateChildren(NumberSpawnChildren, ChildTemplate);
+        instantiateChildren(numberSpawnChildren, childTemplate);
     }
 
-    private void CreateChildren(int numberSpawnChildren, GameObject templateChildren)
+    private void instantiateChildren(int numberSpawnChildren, GameObject childTemplate)
     {
         for (int i = 0; i < numberSpawnChildren; i++)
         {
-            Instantiate(templateChildren, transform.position, transform.rotation);
+            Instantiate(childTemplate, transform.position, transform.rotation);
         }
     }
-
 }

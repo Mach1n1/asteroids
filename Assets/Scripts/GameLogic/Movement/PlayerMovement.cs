@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Game.Logic
 {
-     public sealed class PlayerMovement : AbstractMovement
+     public class PlayerMovement : AbstractMovement
     {
         public Vector3 acceleration {get; private set;}
         public float eulerAngle {get; private set;}

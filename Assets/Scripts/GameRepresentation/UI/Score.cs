@@ -6,13 +6,13 @@ public class Score : MonoBehaviour
 {
     [SerializeField] private TMP_Text score;
 
-    public int RewardScore { get; private set; }
-
     private int currentRewardScore;
 
+    public int RewardScore { get; private set; }
+    
     public event UnityAction<int> RewardScoreChanged;
 
-    private void Update()
+    private void FixedUpdate()
     {
         CorrectionCurrentRewardScore();
     }
@@ -37,5 +37,4 @@ public class Score : MonoBehaviour
     {
         score.text = currentRewardScore.ToString();
     }
-
 }

@@ -25,7 +25,7 @@ public class Teleportation : MonoBehaviour
         GetEdgesScreen();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         TryTeleportation();
     }   

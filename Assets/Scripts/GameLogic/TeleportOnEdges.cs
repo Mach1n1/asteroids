@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace Game.Logic
 {
-
     public class TeleportOnEdges
     {
         private readonly ScreenEdges edges;
@@ -43,6 +42,5 @@ namespace Game.Logic
                 transform.position = new Vector2(edges.Right, transform.position.y);
             }
         }
-
     }    
 }

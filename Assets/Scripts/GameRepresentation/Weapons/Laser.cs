@@ -9,6 +9,7 @@ public sealed class Laser : AbstractWeapon
     {
         ammo = GetComponent<Ammo>();
     }
+    
     public override void WeaponShoot()
     {
         ammo.SpendCharge();

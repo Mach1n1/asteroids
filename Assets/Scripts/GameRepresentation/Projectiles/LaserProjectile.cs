@@ -7,7 +7,7 @@ public class LaserProjectile : AbstractProjectile
         DestroyYourselfAfterSomeTime(gameObject, TimeToDestroy);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         BulletMovement(BulletSpeed);
     }

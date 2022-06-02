@@ -4,7 +4,7 @@ public class Spawner : ObjectPool
 {
     [SerializeField] private GameObject[] enemyTemplates;
     [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private float _secondBetweenSpawn;
+    [SerializeField] private float secondBetweenSpawn;
 
     private float elapsedTime = 0;
 
@@ -17,7 +17,7 @@ public class Spawner : ObjectPool
     {
         SetRealSeconds();
 
-        if(elapsedTime >= _secondBetweenSpawn)
+        if(elapsedTime >= secondBetweenSpawn)
         {
             SpawnEnemy();
         }

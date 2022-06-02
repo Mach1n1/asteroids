@@ -5,36 +5,36 @@ public class MoveInfoUI : MonoBehaviour
 {
     [SerializeField] private PlayerMoveUI player;
 
-    [SerializeField] private TMP_Text _coordinatPlayer;
-    [SerializeField] private TMP_Text _angleRotationPlayer;
-    [SerializeField] private TMP_Text _instantaneousSpeedPlayer;
+    [SerializeField] private TMP_Text playerPosition;
+    [SerializeField] private TMP_Text playerRotation;
+    [SerializeField] private TMP_Text playerSpeed;
 
     private void OnEnable()
     {
-        player.CoordinatesShipPlayerChanged += OnCoordinatesShipPlayerChanged;
+        player.PlayerShipPositionChanged += OnPlayerPositionChanged;
         player.AngleRotationChanged += OnAngleRotationChanged;
         player.SpeedChanged += OnChangedSpeed;
     }
 
     private void OnDisable()
     {
-        player.CoordinatesShipPlayerChanged -= OnCoordinatesShipPlayerChanged;
+        player.PlayerShipPositionChanged -= OnPlayerPositionChanged;
         player.AngleRotationChanged -= OnAngleRotationChanged;
         player.SpeedChanged -= OnChangedSpeed;
     }
 
-    private void OnCoordinatesShipPlayerChanged(Vector2 coordinates)
+    private void OnPlayerPositionChanged(Vector2 coordinates)
     {
-        _coordinatPlayer.text = $"Coordinate: {coordinates}";
+        playerPosition.text = $"Position: {coordinates}";
     }
 
     private void OnAngleRotationChanged(float angle)
     {
-        _angleRotationPlayer.text = $"AngleRotation: {Mathf.RoundToInt(angle)}°";
+        playerRotation.text = $"Rotation: {Mathf.RoundToInt(angle)}°";
     }
 
     private void OnChangedSpeed(float boost)
     {
-        _instantaneousSpeedPlayer.text = $"Speed: {Mathf.RoundToInt(boost)}";
+        playerSpeed.text = $"Speed: {Mathf.RoundToInt(boost)}";
     }
 }

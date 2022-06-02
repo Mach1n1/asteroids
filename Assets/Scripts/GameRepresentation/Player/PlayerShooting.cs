@@ -40,7 +40,8 @@ public class PlayerShooting : MonoBehaviour
     private void TryShootLaser()
     {
         if (ammo.CurrentAmmo > 0)
+        {
             laser.WeaponShoot();
+        }
     }
-
 }

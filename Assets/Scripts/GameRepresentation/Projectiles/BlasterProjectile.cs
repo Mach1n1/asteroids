@@ -7,7 +7,7 @@ public class BlasterProjectile : AbstractProjectile
         DestroyYourselfAfterSomeTime(gameObject, TimeToDestroy);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         BulletMovement(BulletSpeed);
     }

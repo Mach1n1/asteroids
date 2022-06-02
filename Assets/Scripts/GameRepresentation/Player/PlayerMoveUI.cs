@@ -9,11 +9,11 @@ public class PlayerMoveUI : MonoBehaviour
     public float Boost { get; private set; }
     public float Angle { get; private set; }
 
-    public event UnityAction<Vector2> CoordinatesShipPlayerChanged;
+    public event UnityAction<Vector2> PlayerShipPositionChanged;
     public event UnityAction<float> SpeedChanged;
     public event UnityAction<float> AngleRotationChanged;
 
-    private void Update()
+    private void FixedUpdate()
     {
         CoordinatesPlayerShip();
         InstantaneousSpeed();
@@ -23,21 +23,18 @@ public class PlayerMoveUI : MonoBehaviour
     private void CoordinatesPlayerShip()
     {
         Coordinate = player.TransformPlayer.position;
-
-        CoordinatesShipPlayerChanged?.Invoke(Coordinate);
+        PlayerShipPositionChanged?.Invoke(Coordinate);
     }
 
     private void InstantaneousSpeed()
     {
         Boost = player.AccelerationPlayer.magnitude * 1000;
-
         SpeedChanged?.Invoke(Boost);
     }
 
     private void AngleRotation()
     {
         Angle = player.AngleRotatePlayer;
-
         AngleRotationChanged?.Invoke(Angle);
     }
 }

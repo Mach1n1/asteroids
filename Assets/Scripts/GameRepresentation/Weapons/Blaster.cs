@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class Blaster : AbstractWeapon
 {
     public override void WeaponShoot()

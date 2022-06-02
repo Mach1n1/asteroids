@@ -20,7 +20,6 @@ public class AsteroidMove : MonoBehaviour
     private void FixedUpdate()
     {
         movement.SetSpeed(moveSpeed, Time.deltaTime);
-
         movement.Move(asteroidTransform);
     }
 }

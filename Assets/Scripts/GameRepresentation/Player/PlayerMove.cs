@@ -7,6 +7,7 @@ public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private Boost boost;
     [SerializeField] private ItsTimeToStop timeStop;
+
     private PlayerInputActions input;
     private PlayerMovement movement;
     private Transform transformPlayer;
@@ -37,7 +38,7 @@ public class PlayerMove : MonoBehaviour
         transformPlayer = GetComponent<Transform>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         ReadInputValues();
         TryToMove();
@@ -59,7 +60,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (PlayerIsMoving())
         {
-                movement.Accelerate(transformPlayer, boost.unitsInSecond, boost.maxBoost, Time.deltaTime);
+            movement.Accelerate(transformPlayer, boost.unitsInSecond, boost.maxBoost, Time.deltaTime);
         }
         else
         {
@@ -84,20 +85,19 @@ public class PlayerMove : MonoBehaviour
 
 [Serializable]
 internal class Boost
-    {
-        [SerializeField] private float mySpeed;
-        [SerializeField] private float myMaxSpeed;
-        [SerializeField] private float myRotationSpeed;
+{
+    [SerializeField] private float mySpeed;
+    [SerializeField] private float myMaxSpeed;
+    [SerializeField] private float myRotationSpeed;
 
-        public float unitsInSecond => mySpeed;    
-        public float maxBoost => myMaxSpeed;
-        public float rotation => myRotationSpeed;
-    }
+    public float unitsInSecond => mySpeed;    
+    public float maxBoost => myMaxSpeed;
+    public float rotation => myRotationSpeed;
+}
 
 [Serializable]
 internal class ItsTimeToStop
 {
     [SerializeField] private float seconds;
-
     public float SecondsToStop => seconds;
 }
