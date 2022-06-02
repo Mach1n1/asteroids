@@ -32,7 +32,7 @@ public class Ammo : MonoBehaviour
         SetCurrentCountdownTimeView();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         ConditionsReloadingAmmo();
     }
