@@ -286,7 +286,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: score
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -920,7 +920,7 @@ MonoBehaviour:
   - {fileID: 607215890}
   - {fileID: 573466438}
   - {fileID: 1003471470}
-  secondBetweenSpawn: 3
+  secondBetweenSpawn: 2
 --- !u!1 &607215889
 GameObject:
   m_ObjectHideFlags: 0

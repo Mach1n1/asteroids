@@ -143,4 +143,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Score: 10
   childTemplate: {fileID: 4714859060655041207, guid: 76aefe005e28ae04c8b1b017c260b379, type: 3}
-  numberSpawnChildren: 2
+  numberSpawnChildren: 3
