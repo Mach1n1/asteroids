@@ -1,5 +1,5 @@
 {
-    "name": "GameLogic",
+    "name": "Game.Logic",
     "rootNamespace": "Game.Logic",
     "references": [],
     "includePlatforms": [],
